@@ -2,7 +2,6 @@
 
 #Protobuf Compiled Files
 addressbook_pb2.py
-addressbook_pb2.pyc
 addressbook_pb2_grpc.py
 
 #Database

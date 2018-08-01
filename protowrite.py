@@ -26,31 +26,33 @@ def PromptForAddress(person):
 		elif phonetype == "home":
 			phone_number.type = addressbook_pb2.Person.HOME 
 		elif phonetype == "work":
-			phone_number.type = addressbook_pb2.Person.work
+			phone_number.type = addressbook_pb2.Person.WORK
 		else:
 			print "Unknown phone type: Leaving as default value."
 
+
 # Main Procedure: Reads the entire address book from a file,
-#	adds one person based on user input, then writes it back to the same
-#	file
-if len(sys.argv) != 2:
-	print "Usage:", sys.argv[0], "ADDRESS_BOOK_FILE"
-	sys.exit(-1)
+# 	adds one person based on user input, then writes it back to the same
+	# file
+# if len(sys.argv) != 2:
+# 	print "Usage:", sys.argv[0], "ADDRESS_BOOK_FILE"
+# 	sys.exit(-1)
 
-address_book = addressbook_pb2.AddressBook()
+# address_book = addressbook_pb2.AddressBook()
 
-# Read the existing address book.
-try:
-	f = open(sys.argv[1], "rb")
-	address_book.ParseFromString(f.read())
-	f.close()
-except IOError:
-	print sys.argv[1] + ": Could not open file. Creating a new one"
+# # Read the existing address book.
+# try:
+# 	f = open(sys.argv[1], "rb")
+# 	address_book.ParseFromString(f.read())
+# 	f.close()
+# except IOError:
+# 	print sys.argv[1] + ": Could not open file. Creating a new one"
 
-# Add an address
-PromptForAddress(address_book.people.add())
-
-# Write the new address book back to the disk
-f = open(sys.argv[1], "wb")
-f.write(address_book.SerializeToString())
-f.close
+# # Add an address
+# person = addressbook_pb2.Person() 
+# PromptForAddress(person)
+# address_book.people.extend([person])
+# # Write the new address book back to the disk
+# f = open(sys.argv[1], "wb")
+# f.write(address_book.SerializeToString())
+# f.close

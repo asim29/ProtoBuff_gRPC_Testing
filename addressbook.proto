@@ -1,6 +1,16 @@
 syntax = "proto3";
 
-package tutorial;
+service AddressBookCom{
+	rpc WriteToBook(Person) returns (Response) {}
+
+	rpc ReadFromBook(Response) returns (stream Person) {}
+}
+
+message Empty {}
+
+message Response {
+	string reply = 1;
+}
 
 message Person {
 	string name = 1;
@@ -10,7 +20,7 @@ message Person {
 	enum PhoneType{
 		HOME = 0;
 		MOBILE = 1;
-		work = 2;
+		WORK = 2;
 	}
 
 	message PhoneNumber {
